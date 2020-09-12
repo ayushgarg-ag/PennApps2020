@@ -5,13 +5,13 @@
 // waApi.getShort("16th president of us").then(console.log).catch(console.error);
 
 
-var xmlHttp;
-xmlHttp = new XMLHttpRequest();
-// var url = "https://www.wolframalpha.com/queryrecognizer/query.jsp?mode=Default&i=Population+in+Norway&appid=PY2VE6-7L9AV92EH9";
-var url = "https://www.wolframalpha.com/queryrecognizer/query.jsp?mode=Default&i=How+far+away+is+the+Moon%3F&appid=UL4LPK-XGHPTR7V3L";
-xmlHttp.open("GET", url, true);
-xmlHttp.onreadystatechange = handleResponse();
-xmlHttp.send();
+// var xmlHttp;
+// xmlHttp = new XMLHttpRequest();
+// // var url = "https://www.wolframalpha.com/queryrecognizer/query.jsp?mode=Default&i=Population+in+Norway&appid=PY2VE6-7L9AV92EH9";
+// var url = "https://www.wolframalpha.com/queryrecognizer/query.jsp?mode=Default&i=How+far+away+is+the+Moon%3F&appid=UL4LPK-XGHPTR7V3L";
+// xmlHttp.open("GET", url, true);
+// xmlHttp.onreadystatechange = handleResponse();
+// xmlHttp.send();
 
 // var request = new XMLHttpRequest();
 // request.open('GET', 'https://www.wolframalpha.com/queryrecognizer/query.jsp?mode=Default&i=Population+in+Norway&appid=PY2VE6-7L9AV92EH9', true);
