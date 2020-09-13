@@ -68,7 +68,7 @@
 
             var prevstateId = "";
 
-        function addState() {
+        async function addState() {
             // color countries already visited to focus on the most recent country
             // adds to list
             var ul = document.getElementById("dynamic-list");
@@ -96,22 +96,42 @@
             var stateId = stateMap[state];
             document.getElementById(stateId).style.fill = "#8ef5ab";
             prevstateId = stateId;
-
+            document.getElementById('loadingbar').style.display = 'block';
+            document.getElementById('learnedabout').style.display = 'block';
+            document.getElementById('apioutput').style.display = 'none';
+            // sets text for api output
+            document.getElementById('stateoutid').innerHTML = capitalizedResult;
+            document.getElementById('countryoutheader').style.display = 'block';
+            // Default options are marked with *
+            const response = await fetch('/stateresponse', { // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: state, // body data type must match "Content-Type" header
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            });
+            const result = await response.json();
+            document.getElementById('loadingbar').style.display = 'none';
+            document.getElementById('apioutput').style.display = 'block';
+            document.getElementById('apioutput').innerHTML = result;
         }
     </script>
 </head>
 <body style="background-color: #1b1b1b;">
+    <h1 style="font-size: 50px; color:rgb(93, 175, 162); text-align: center; margin: 0 10%;">MAPIFY US MAP</h1>
+    <h2 style="font-size: 20px; color:#8eb0f5; text-align: center; margin: 0 10%;"><a href="/">Return to Home</a><span> | </span><a href='/world_map'>World Map</a></h2>
     <br>
     <br>
-    <h2 style="text-align: center; display: block; margin:0 10%; font-size: 25px; color: #FFF;">Type in the name of a
-        state and find out where it is in the United States! Learn some basic reference info for that next geography test or
+    <h2 style="text-align: center; display: block; margin:0 10%; font-size: 25px; color: #FFF;">Type in one of the names of the fifty nifty United States! Learn some basic reference info for that next geography test or trivia game, or bolster your state pride!
         just have some fun!</h2>
+    
     <br />
 
     <div style="text-align: center; display: block; margin: 0 auto;">
         <input type="text" id="input-state" name="input-state" style="font-size: 30px;">
         <button style="background-color: rgb(93, 175, 162); font-size: 30px;"
-            onclick="addState()"><strong>Add</strong></button>
+            onclick="addState()"><strong>Search</strong></button>
         <strong>
             <p id='errorstate' style="color: red; font-size: 20px;"></p>
         </strong>
@@ -119,12 +139,13 @@
 
     <div id="table">
         <br />
-        <p style="text-align: center; display: block; margin:0 auto; color: #FFF; font-size: 25px;"><u>States you've
-                learned about:</u></p>
+        <h2 id="learnedabout" style="text-align: center; display: block; margin:15 auto; color: #FFF; display: none;"><u>States you've learned about:</u></h2>
         <ul id="dynamic-list"
-            style="text-align: center; font-size: 20px; color: #FFF; list-style-type: none; padding-right: 15px;"></ul>
+            style="text-align: center; font-size: 20px; color: #FFF; list-style-type: none; margin: 0 0; padding: 0 0"></ul>
     </div>
-
+    <h2 id='countryoutheader' style="text-align: center; color: #FFF; margin: 15 auto; display: none;"><u>Information about <span id="stateoutid"></span>:</u></h2>
+    <p id='loadingbar' style='display: none; color: #FFF; text-align: center; font-size:20px;'><i>Loading information from our friends at Wolfram|Alpha...</i></p>
+    <strong><pre id='apioutput' style='background-color: #1b1b1b; color: #FFF; text-align: center; border: none; font-family: Arial, Helvetica, sans-serif; font-size: 18px;'></pre></strong>
     <div>
         <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
