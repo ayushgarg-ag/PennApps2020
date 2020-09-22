@@ -7,6 +7,8 @@ This Flask-based web application creates POST and GET requests based on the user
 ## About Us
 This website was ideated, created, and designed from scratch by <b>Ayush Garg</b> and <b>Brayden Miller</b> during the 2-day Hackathon <a href="https://pennappsxxi.devpost.com/">PennApps XXI</a>.
 
+This project won the award for the Best Use of Wolfram Technology.
+
 ## Website Walkthrough
 
 ### Home
