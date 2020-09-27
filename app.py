@@ -6,7 +6,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 from flask import Flask, request, render_template, jsonify
 app = Flask(__name__)
 
-client = wolframalpha.Client("PY2VE6-7L9AV92EH9") 
+client = wolframalpha.Client("apikey") 
 
 @app.route('/')
 def index():
