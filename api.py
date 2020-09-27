@@ -2,7 +2,7 @@ import wolframalpha
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
-client = wolframalpha.Client("PY2VE6-7L9AV92EH9") 
+client = wolframalpha.Client("apikey") 
 # Instance of wolf ram alpha  
 country = input('Country: ') 
 
